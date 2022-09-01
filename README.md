@@ -1,10 +1,6 @@
 Express API Template
 
-## Installation
-
-`$ npm istall cpca`
-
-## Example
+## Intrucciones
 
 Ejecutar los siguientes comandos en MYSQL ambiente:
 
