@@ -11,12 +11,11 @@ const sqlInsert = async (table, columns, values) => {
       valores += '%s, ';
     }
     valores += 'end of string';
-    valores = valores.replace(", end of string", ")");
+    valores = valores.replace(', end of string', ')');
     query = `
         INSERT INTO ${table} (${columns})
         VALUES ${valores}
     `;
-    
   }
 };
 
