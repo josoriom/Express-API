@@ -2,10 +2,10 @@
 
 <!-- [![NPM version][npm-image]][npm-url] -->
 [![build status][ci-image]][ci-url]
-[![Test coverage][codecov-image]][codecov-url]
+<!-- [![Test coverage][codecov-image]][codecov-url] -->
 <!-- [![npm download][download-image]][download-url] -->
 
-## Intrucciones
+<!-- ## Intrucciones
 
 Ejecutar los siguientes comandos en MYSQL ambiente:
 
@@ -17,7 +17,7 @@ ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password
 Actualizar privilegios
 ```sql
 flush privileges;
-```
+``` -->
 
 [npm-image]: https://img.shields.io/npm/v/Express-API.svg
 [npm-url]: https://www.npmjs.com/package/Express-API
