@@ -9,7 +9,7 @@ const sqlSearch = async (table, options = {}) => {
     orderBy = '',
     columns = [],
   } = options;
-  const connection = await sqlConnection();
+  await sqlConnection();
   if (orderBy != '') orderBy = `ORDER BY ${orderBy}`;
   if (!columns.length) {
     if (valor === 'all') {

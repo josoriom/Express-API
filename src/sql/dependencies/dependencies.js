@@ -1,5 +1,3 @@
 const sqlSearch = require('./sqlSearch');
 
-module.exports = {
-  sqlSearch,
-};
+module.exports = { sqlSearch };
