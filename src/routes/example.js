@@ -1,6 +1,6 @@
-const { Router } = require('express');
+const { Router, response } = require('express');
 
-const getTest = async (req, res = respose) => {
+const getTest = async (req, res = response) => {
   try {
     res.json({
       ok: true,
@@ -14,7 +14,7 @@ const getTest = async (req, res = respose) => {
   }
 };
 
-const deleteTest = async (req, res = respose) => {
+const deleteTest = async (req, res = response) => {
   try {
     res.json({
       ok: true,
@@ -28,7 +28,7 @@ const deleteTest = async (req, res = respose) => {
   }
 };
 
-const postTest = async (req, res = respose) => {
+const postTest = async (req, res = response) => {
   try {
     res.json({
       ok: true,
@@ -42,7 +42,7 @@ const postTest = async (req, res = respose) => {
   }
 };
 
-const putTest = async (req, res = respose) => {
+const putTest = async (req, res = response) => {
   try {
     res.json({
       ok: true,

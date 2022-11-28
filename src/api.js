@@ -53,6 +53,7 @@ class ExpressAPI {
   }
 
   close() {
+    // @ts-ignore
     this.connection.close();
   }
 }
