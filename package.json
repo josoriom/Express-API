@@ -7,7 +7,8 @@
     "prettier": "prettier --check src",
     "prettier-write": "prettier --write src",
     "test-only": "jest --coverage",
-    "test": "npm run test-only && npm run prettier"
+    "test": "npm run test-only && npm run prettier",
+    "start": "node src/index.js"
   },
   "keywords": [
     "api"
