@@ -3,35 +3,48 @@ const { sqlConnection } = require('../connection');
 /**
  * SQL insert function
  * @param {string} table The name of the table in the SQL DB
- * @param {Array<string>} columns The columns which the values will be insert it.
- * @param {Array<Array<any>>|Array<any>} values The array with the values to insert in the DB
+ * @param {Array<Object>|Object} data Object or Array of objects with the data to insert
  */
-async function sqlInsert(table, columns, values) {
-  if (columns.length !== values.length) {
-    throw Error('Los valores insertados deben ser iguales a las columnas');
-  } else {
-    const connection = await sqlConnection();
-    connection.connect();
-    const query = `
-      INSERT INTO ${table} (${columns}) VALUES ?
-    `;
-    values = checkValues(values);
-    connection.query(query, [values], (error, response) => {
-      if (error) {
-        console.log(`SQL Error --:>${error}`);
-      } else {
-        return response;
-      }
-    });
-    connection.end();
-  }
+async function sqlInsert(table, data) {
+  const connection = await sqlConnection();
+  connection.connect();
+  const { columns, values } = getData(data);
+  const query = `
+    INSERT INTO ${table} (${columns}) VALUES ?
+  `;
+  connection.query(query, [values], (error, response) => {
+    if (error) {
+      console.log(`SQL Error --:>${error}`);
+    } else {
+      return response;
+    }
+  });
+  connection.end();
 }
 
-function checkValues(array) {
-  if (Array.isArray(array[0])) {
-    return array;
+function getData(entry) {
+  if (Array.isArray(entry)) {
+    const values = [];
+    const columns = Object.keys(entry[0]);
+    for (const obj of entry) {
+      values.push(Object.values(obj));
+    }
+    return {
+      columns,
+      values,
+    };
   } else {
-    return [array];
+    const values = [];
+    const columns = [];
+    const entries = Object.entries(entry);
+    for (const item of entries) {
+      columns.push(item[0]);
+      values.push(item[1]);
+    }
+    return {
+      columns,
+      values: [values],
+    };
   }
 }
 
