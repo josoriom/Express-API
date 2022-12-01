@@ -17,8 +17,11 @@ async function sqlInsert(table, columns, values) {
     `;
     values = checkValues(values);
     connection.query(query, [values], (error, response) => {
-      if (error) throw error;
-      console.log('Number of records inserted: ' + response.affectedRows);
+      if (error) {
+        console.log(`SQL Error --:>${error}`);
+      } else {
+        return response;
+      }
     });
     connection.end();
   }
