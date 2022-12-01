@@ -1,4 +1,4 @@
-const { sqlConnection } = require('../settings');
+const { sqlConnection } = require('../connection');
 const { runQuery } = require('./runQuery');
 
 const sqlSearch = async (table, options = {}) => {
@@ -9,7 +9,6 @@ const sqlSearch = async (table, options = {}) => {
     orderBy = '',
     columns = [],
   } = options;
-  await sqlConnection();
   if (orderBy != '') orderBy = `ORDER BY ${orderBy}`;
   if (!columns.length) {
     if (valor === 'all') {

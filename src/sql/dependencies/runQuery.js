@@ -1,11 +1,11 @@
-const { sqlConnection } = require('../settings');
+const { sqlConnection } = require('../connection');
 const { toJSON } = require('./toJSON');
 
-const runQuery = async (sql) => {
+const runQuery = async (query, values) => {
   const connection = await sqlConnection();
   connection.connect();
   return new Promise(function (resolve, reject) {
-    connection.query(sql, (e, rows, f) => resolve(toJSON(rows)));
+    connection.query(query, (error, response) => resolve(toJSON(response)));
     connection.end();
   });
 };
