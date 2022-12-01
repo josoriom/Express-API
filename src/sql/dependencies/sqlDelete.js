@@ -3,14 +3,15 @@ const { sqlConnection } = require('../connection');
 /**
  * SQL delete function
  * @param {string} table The name of the table in the SQL DB
- * @param {string} parameter The name of the column which the value should match in order to delete the entry.
- * @param {any} value The key value to delete from the table.
+ * @param {Object} data Object where the key is the name of the column, and the value is the value to match in order to delete the entry.
  */
-async function sqlDelete(table, parameter, value) {
+async function sqlDelete(table, data) {
   const connection = await sqlConnection();
   connection.connect();
+  const column = Object.keys(data)[0];
+  const value = Object.values(data)[0];
   const query = `
-    DELETE FROM ${table} WHERE ${parameter} = ${value}
+    DELETE FROM ${table} WHERE ${column} = '${value}'
   `;
   connection.query(query, (error, response) => {
     if (error) {
