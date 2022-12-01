@@ -4,7 +4,7 @@ const express = require('express');
 
 const { dbConnection } = require('./databases/mongo');
 
-class ExpressAPI {
+class Server {
   constructor() {
     this.app = express();
     // Asigna a la clase el puerto definido en la variable de entorno
@@ -58,4 +58,4 @@ class ExpressAPI {
   }
 }
 
-module.exports = { ExpressAPI };
+module.exports = { Server };

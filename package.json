@@ -1,7 +1,7 @@
 {
-  "name": "express-template",
+  "name": "server-template",
   "version": "0.0.0",
-  "description": "Express API template",
+  "description": "Server template",
   "main": "src/index.js",
   "scripts": {
     "prettier": "prettier --check src",

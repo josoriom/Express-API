@@ -1,4 +1,4 @@
-const { ExpressAPI } = require('./api');
+const { Server } = require('./server');
 
-const server = new ExpressAPI();
+const server = new Server();
 server.listen();

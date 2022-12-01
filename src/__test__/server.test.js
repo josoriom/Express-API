@@ -1,12 +1,11 @@
 const axios = require('axios');
 
-const { ExpressAPI } = require('../api');
+const { Server } = require('../server');
 
-describe('Express API', () => {
-  const api = new ExpressAPI();
+describe('Server', () => {
+  const server = new Server();
   it('Probar método GET', async () => {
-    // Inicializar la API
-    api.listen();
+    server.listen();
 
     // Realizar la petición con método GET
     const result = await axios.get(
@@ -19,15 +18,14 @@ describe('Express API', () => {
     );
 
     // Cerrar la conexión
-    api.close();
+    server.close();
 
     expect(result.data.ok).toBe(true);
     expect(result.data.msg).toBe('Successful test for method get');
   });
 
   it('Probar método DELETE', async () => {
-    // Inicializar la API
-    api.listen();
+    server.listen();
 
     // Realizar la petición con método DELETE
     const result = await axios.delete(
@@ -40,16 +38,15 @@ describe('Express API', () => {
     );
 
     // Cerrar la conexión
-    api.close();
+    server.close();
 
     expect(result.data.ok).toBe(true);
     expect(result.data.msg).toBe('Successful test for method delete');
   });
 
   it('Probar método POST', async () => {
-    // Inicializar la API
     const string = 'texto de prueba';
-    api.listen();
+    server.listen();
 
     // Realizar la petición con método POST
     const result = await axios.post(
@@ -65,16 +62,15 @@ describe('Express API', () => {
     );
 
     // Cerrar la conexión
-    api.close();
+    server.close();
 
     expect(result.data.ok).toBe(true);
     expect(result.data.msg).toBe(`The response for post method is: ${string}`);
   });
 
   it('Probar método PUT', async () => {
-    // Inicializar la API
     const string = 'texto de prueba';
-    api.listen();
+    server.listen();
 
     // Realizar la petición con método PUT
     const result = await axios.put(
@@ -90,7 +86,7 @@ describe('Express API', () => {
     );
 
     // Cerrar la conexión
-    api.close();
+    server.close();
     expect(result.data.ok).toBe(true);
     expect(result.data.msg).toBe(`The response for put method is: ${string}`);
   });
