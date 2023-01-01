@@ -1,7 +1,6 @@
-const { sqlConnection } = require('../connection');
-const { runQuery } = require('./runQuery');
+import { runQuery } from './runQuery.mjs';
 
-const sqlSearch = async (table, options = {}) => {
+export const sqlSearch = async (table, options = {}) => {
   let {
     parametro = 'id',
     valor = 'all',
@@ -37,5 +36,3 @@ const sqlSearch = async (table, options = {}) => {
     }
   }
 };
-
-module.exports = { sqlSearch };

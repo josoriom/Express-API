@@ -1,11 +1,11 @@
-const { sqlConnection } = require('../connection');
+import { sqlConnection } from '../connection.mjs';
 
 /**
  * SQL insert function
  * @param {string} table The name of the table in the SQL DB
  * @param {Array<Object>|Object} data Object or Array of objects with the data to insert
  */
-async function sqlInsert(table, data) {
+export async function sqlInsert(table, data) {
   const connection = await sqlConnection();
   connection.connect();
   const { columns, values } = getData(data);
@@ -47,5 +47,3 @@ function getData(entry) {
     };
   }
 }
-
-module.exports = { sqlInsert };

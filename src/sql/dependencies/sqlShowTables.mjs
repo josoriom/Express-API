@@ -1,9 +1,9 @@
-const { sqlConnection } = require('../connection');
+import { sqlConnection } from '../connection.mjs';
 
 /**
  * SQL function to show tables
  */
-async function sqlShowTables() {
+export async function sqlShowTables() {
   const connection = await sqlConnection();
   connection.connect();
   connection.query('SHOW tables', function (error, response) {
@@ -15,5 +15,3 @@ async function sqlShowTables() {
   });
   connection.end();
 }
-
-module.exports = { sqlShowTables };

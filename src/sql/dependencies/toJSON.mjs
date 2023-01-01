@@ -1,4 +1,4 @@
-const toJSON = (array) => {
+export const toJSON = (array) => {
   const result = [];
   for (const item of array) {
     const { ...json } = item;
@@ -7,4 +7,3 @@ const toJSON = (array) => {
   return result;
 };
 
-module.exports = { toJSON };

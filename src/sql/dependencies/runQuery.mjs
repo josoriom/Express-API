@@ -1,7 +1,7 @@
-const { sqlConnection } = require('../connection');
-const { toJSON } = require('./toJSON');
+import { sqlConnection } from '../connection.mjs';
+import { toJSON } from './toJSON.mjs';
 
-const runQuery = async (query, values) => {
+export const runQuery = async (query, values) => {
   const connection = await sqlConnection();
   connection.connect();
   return new Promise(function (resolve, reject) {
@@ -9,5 +9,3 @@ const runQuery = async (query, values) => {
     connection.end();
   });
 };
-
-module.exports = { runQuery };

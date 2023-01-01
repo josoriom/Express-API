@@ -1,7 +1,9 @@
-const mysql = require('mysql');
-require('dotenv').config();
+import mysql from 'mysql';
+import dotenv from 'dotenv';
+dotenv.config();
 
-async function sqlConnection() {
+
+export async function sqlConnection() {
   const dbConfig = {
     host: process.env.DBHOST,
     user: process.env.DBUSER,
@@ -11,5 +13,3 @@ async function sqlConnection() {
 
   return mysql.createConnection(dbConfig);
 }
-
-module.exports = { sqlConnection };

@@ -1,6 +1,6 @@
-const axios = require('axios');
+import axios from 'axios';
 
-const { Server } = require('../server');
+import { Server } from '../server';
 
 describe('Server', () => {
   const server = new Server();

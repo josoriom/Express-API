@@ -1,4 +1,4 @@
-const { sqlConnection } = require('../connection');
+import { sqlConnection } from '../connection.mjs';
 
 /**
  * SQL update function
@@ -6,7 +6,7 @@ const { sqlConnection } = require('../connection');
  * @param {Object} where Object where column is the name of the column to search, and value is the identifier to match in order to update the entry.
  * @param {Object} data Object with the new data.
  */
-async function sqlUpdate(table, where, data) {
+export async function sqlUpdate(table, where, data) {
   const connection = await sqlConnection();
   connection.connect();
   const { column, value } = where;
@@ -28,6 +28,4 @@ async function sqlUpdate(table, where, data) {
     }
   });
   connection.end();
-}
-
-module.exports = { sqlUpdate };
+};

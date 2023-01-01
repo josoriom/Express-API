@@ -1,4 +1,4 @@
-const { Router, response } = require('express');
+import { Router, response } from 'express';
 
 const getTest = async (req, res = response) => {
   try {
@@ -66,4 +66,4 @@ router.post('/post_method', postTest);
 
 router.put('/put_method', putTest);
 
-module.exports = router;
+export { router };

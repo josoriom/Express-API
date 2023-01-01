@@ -1,11 +1,11 @@
-const { sqlConnection } = require('../connection');
+import { sqlConnection } from '../connection.mjs';
 
 /**
  * SQL delete function
  * @param {string} table The name of the table in the SQL DB
  * @param {Object} data Object where the key is the name of the column, and the value is the value to match in order to delete the entry.
  */
-async function sqlDelete(table, data) {
+export async function sqlDelete(table, data) {
   const connection = await sqlConnection();
   connection.connect();
   const column = Object.keys(data)[0];
@@ -22,5 +22,3 @@ async function sqlDelete(table, data) {
   });
   connection.end();
 }
-
-module.exports = { sqlDelete };

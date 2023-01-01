@@ -1,4 +1,4 @@
-const getRandomString = function (options = {}) {
+export const getRandomString = function (options = {}) {
   const { length = 25 } = options;
   let result = [];
   let characters =
@@ -11,5 +11,3 @@ const getRandomString = function (options = {}) {
   }
   return result.join('');
 };
-
-module.exports = { getRandomString };

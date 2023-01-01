@@ -1,49 +1,36 @@
-require('dotenv').config();
-const cors = require('cors');
-const express = require('express');
+import dotenv from 'dotenv'; 
+import cors from 'cors';
+import express from 'express';
+import { router } from './routes/example.mjs';
 
-const { dbConnection } = require('./databases/mongo');
+dotenv.config();
 
-class Server {
+export class Server {
   constructor() {
     this.app = express();
-    // Asigna a la clase el puerto definido en la variable de entorno
     this.port = process.env.PORT;
-
-    // Conectar a la base de datos
-    // Cuando se tengan las credenciales correspondientes
-    // se descomenta esta opción para conectar a la base de datos
-
-    // this.connectDB();
-
-    // Middlewares
     this.middlewares();
-    // Rutas de mi aplicación
-    this.routes();
-
+    //this.routes();
     this.server = require('http').createServer(this.app);
   }
 
-  async connectDB() {
-    await dbConnection();
-  }
-
   middlewares() {
-    // Activar CORS (Cross-Origin Resource Sharing)
+    // Activate CORS (Cross-Origin Resource Sharing)
     this.app.use(cors());
-    // Lectura y parseo del body
+    // Reading and parsing the body
     this.app.use(express.json());
-    // Directorio público ubicado en la carpeta raíz del proyecto
+    // Public directory located in the root folder of the project
     this.app.use(express.static('public'));
   }
 
   /**
-   * Este método tiene rutas de ejemplo ubicadas en el path
+   * This method has example routes located in path
    * 'src/routes/example.js'
-   * el endpoint al que apunta es '/api/test'
+   * the endpoint it points to is '/api/test'
    */
+
   routes() {
-    this.app.use('/api/test', require('./routes/example'));
+    this.app.use('/api/test', router);
   }
 
   listen() {
@@ -57,5 +44,3 @@ class Server {
     this.connection.close();
   }
 }
-
-module.exports = { Server };
