@@ -1,1 +1,0 @@
-export default ['**/__tests__/**/*.mjs', '**/?(*.)+(spec|test).mjs'];

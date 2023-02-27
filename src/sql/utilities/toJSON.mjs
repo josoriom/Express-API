@@ -6,4 +6,3 @@ export const toJSON = (array) => {
   }
   return result;
 };
-

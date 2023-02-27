@@ -2,7 +2,6 @@ import mysql from 'mysql';
 import dotenv from 'dotenv';
 dotenv.config();
 
-
 export async function sqlConnection() {
   const dbConfig = {
     host: process.env.DBHOST,

@@ -28,4 +28,4 @@ export async function sqlUpdate(table, where, data) {
     }
   });
   connection.end();
-};
+}
